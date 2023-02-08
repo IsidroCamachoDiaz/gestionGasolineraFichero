@@ -1,7 +1,5 @@
 package gestionGasolinera.dto;
 
-import java.text.Format;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -27,7 +25,6 @@ public gestion(Date fecha, double litros, double importe, String dni, String mat
 	this.matricula = matricula;
 }
 
-	private Date fecha;
 	public Date getFecha() {
 		return fecha;
 	}
@@ -60,7 +57,7 @@ public gestion(Date fecha, double litros, double importe, String dni, String mat
 	}
 	
 	//Atributos 
-
+	private Date fecha;
 	private double litros;
 	private double importe;
 	private String dni;
@@ -70,15 +67,49 @@ public gestion(Date fecha, double litros, double importe, String dni, String mat
 		Scanner leer = new Scanner (System.in);
 		gestion repostaje = new gestion();
 		//SimpleDateFormat formato = new SimpleDateFormat("yyyy/mm/dd");
-		repostaje.fecha= new Date();
+		Date fecha= new Date();
+		repostaje.setFecha(fecha);
 		System.out.println("Introduzca la cantidad que desea meter gasolina: ");
-		double cantidad = leer.nextDouble();
-		double litros = cantidad * 0.762F;
-		
-		
-		
-		return null;
+		repostaje.setImporte(leer.nextDouble());
+		repostaje.setLitros(repostaje.getImporte() * 0.762);
+		repostaje.setMatricula(null);
+		repostaje.setDni(null);
+		bd.add(repostaje);
+		return bd;
 	}
+	public List <gestion> monstrarRepostajeFactura(List <gestion> bd) {
+		Scanner leer = new Scanner (System.in);
+		gestion repostaje = new gestion();
+		//SimpleDateFormat formato = new SimpleDateFormat("yyyy/mm/dd");
+		Date fecha= new Date();
+		repostaje.setFecha(fecha);
+		System.out.println("Introduzca la cantidad que desea meter gasolina: ");
+		repostaje.setImporte(leer.nextDouble());
+		repostaje.setLitros(repostaje.getImporte() * 0.762);
+		System.out.println("Introduzca su DNI: ");
+		repostaje.setDni(leer.next().toUpperCase());
+		System.out.println("Introduzca su Matricula: ");
+		repostaje.setMatricula(leer.next().toUpperCase());
+		bd.add(repostaje);
+		return bd;
+	}
+	public void monstrarRepostaje(List <gestion> bd) {
+		if(bd.isEmpty())
+			System.out.println("No se ha realizado ningun repostaje");
+		else {
+		for(int e=0;e<bd.size();e++) {
+			System.out.println("Fecha: "+bd.get(e).getFecha());
+			System.out.println("Importe: "+bd.get(e).getImporte());
+			System.out.println("Litros: "+bd.get(e).getLitros());
+			if(bd.get(e).getMatricula()!=null) {
+				System.out.println("DNI: "+bd.get(e).getDni());
+				System.out.println("Matricula: "+bd.get(e).getMatricula());
+			}
+		}
+		
+		}
+	}
+		
 
 	
 }
