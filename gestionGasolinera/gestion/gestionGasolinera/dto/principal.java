@@ -14,7 +14,9 @@ public class principal {
 		do {
 		System.out.println("1-Repostaje Normal");
 		System.out.println("2-Repostaje factura");
-		System.out.println("3-Ver todos los repostajes");
+		System.out.println("3-Ver repostajes");
+		System.out.println("4-Modificar Repostaje");
+		System.out.println("5-Eliminar Repostaje");
 		System.out.println("0-Salir");
 		System.out.println("Bienvenido Introduzca un opcion: ");
 		opcion = leer.nextInt();
@@ -24,10 +26,16 @@ public class principal {
 			repostaje.repostajeNormal(bd);
 			break;
 		case 2:
-			repostaje.monstrarRepostajeFactura(bd);
+			repostaje.repostajeFactura(bd);
 			break;
 		case 3:
 			repostaje.monstrarRepostaje(bd);
+			break;
+		case 4:
+			repostaje.modificarRepostaje(bd);
+			break;
+		case 5:
+			repostaje.eliminarRepostaje(bd);
 			break;
 		}
 		
