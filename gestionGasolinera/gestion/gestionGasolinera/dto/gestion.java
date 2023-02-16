@@ -63,6 +63,7 @@ public gestion(Date fecha, double litros, double importe, String dni, String mat
 	private String dni;
 	private String matricula;
 	
+
 	public List <gestion> repostajeNormal(List <gestion> bd) {
 		Scanner leer = new Scanner (System.in);
 		gestion repostaje = new gestion();
