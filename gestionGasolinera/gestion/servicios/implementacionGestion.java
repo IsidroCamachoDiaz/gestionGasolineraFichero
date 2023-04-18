@@ -19,6 +19,7 @@ public class implementacionGestion implements interfazGestion {
 
 	@Override
 	public List<gestion> repostajeNormal(List<gestion> bd,PrintWriter pw) {
+		pw.println("Entro al metodo respotajeNormal");
 		Scanner leer = new Scanner (System.in);
 		gestion repostaje = new gestion();
 		//SimpleDateFormat formato = new SimpleDateFormat("yyyy/mm/dd");
@@ -42,6 +43,7 @@ public class implementacionGestion implements interfazGestion {
 
 	@Override
 	public List<gestion> repostajeFactura(List<gestion> bd,PrintWriter pw) {
+		pw.println("Entro al metodo respotajeFactura");
 		Scanner leer = new Scanner (System.in);
 		gestion repostaje = new gestion();
 		//SimpleDateFormat formato = new SimpleDateFormat("yyyy/mm/dd");
@@ -66,6 +68,7 @@ public class implementacionGestion implements interfazGestion {
 
 	@Override
 	public void monstrarRepostaje(List<gestion> bd,PrintWriter pw) {
+		pw.println("Entro al metodo mostrarRepostaje");
 		Scanner leer = new Scanner (System.in);
 		if(bd.isEmpty())
 			System.out.println("No se ha realizado ningun repostaje");
@@ -118,6 +121,7 @@ public class implementacionGestion implements interfazGestion {
 
 	@Override
 	public List<gestion> modificarRepostaje(List<gestion> bd,PrintWriter pw) {
+		pw.println("Entro al metodo modificarRepostaje");
 		Scanner leer = new Scanner (System.in);
 		mostrar(bd,pw);
 		System.out.println("Que repostaje desea modificar: ");
@@ -161,6 +165,7 @@ public class implementacionGestion implements interfazGestion {
 
 	@Override
 	public List<gestion> eliminarRepostaje(List<gestion> bd,PrintWriter pw) {
+		pw.println("Entro al metodo eliminarRepostaje");
 		Scanner leer = new Scanner (System.in);
 		mostrar(bd,pw);
 		if(!bd.isEmpty()) {
@@ -186,6 +191,7 @@ public class implementacionGestion implements interfazGestion {
 
 	@Override
 	public void mostrar(List<gestion> bd,PrintWriter pw) {
+		pw.println("Entro al metodo mostrar");
 		if(!bd.isEmpty()) {
 		for(int e=0;e<bd.size();e++) {
 			System.out.println("Numero: "+e);

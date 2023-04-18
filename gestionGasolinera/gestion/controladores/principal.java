@@ -47,18 +47,23 @@ public class principal {
 		
 		switch(opcion) {
 		case 1:
+			interfazEs.Escribir(pw, "Opcion Repostaje Normal elegida");
 			interfaz.repostajeNormal(bd,pw);
 			break;
 		case 2:
-			interfaz.repostajeFactura(bd,pw);
+			interfazEs.Escribir(pw, "Opcion Repostaje factura elegida");
+			interfaz.repostajeFactura(bd,pw);			
 			break;
 		case 3:
+			interfazEs.Escribir(pw, "Opcion Mostar Repostajes elegida");
 			interfaz.monstrarRepostaje(bd,pw);
 			break;
 		case 4:
+			interfazEs.Escribir(pw, "Opcion Modificar Repostajes elegida");
 			interfaz.modificarRepostaje(bd,pw);
 			break;
 		case 5:
+			interfazEs.Escribir(pw, "Opcion Eliminar Repostaje elegida");
 			interfaz.eliminarRepostaje(bd,pw);
 			break;
 		}
