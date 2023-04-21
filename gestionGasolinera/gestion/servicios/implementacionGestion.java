@@ -19,8 +19,10 @@ public class implementacionGestion implements interfazGestion {
 
 	@Override
 	public List<gestion> repostajeNormal(List<gestion> bd,PrintWriter pw) {
+		//Pide los valores
 		pw.println("Entro al metodo respotajeNormal");
 		Scanner leer = new Scanner (System.in);
+		//Se crea el objeto gestion
 		gestion repostaje = new gestion();
 		//SimpleDateFormat formato = new SimpleDateFormat("yyyy/mm/dd");
 		Date fecha= new Date();
@@ -33,7 +35,7 @@ public class implementacionGestion implements interfazGestion {
 			System.out.println("Error No puso el formato correcto");
 			pw.println("Error No puso el formato correcto");
 		}
-		
+		//Pone a nulo el dni y matriculo
 		repostaje.setMatricula(null);
 		repostaje.setDni(null);
 		bd.add(repostaje);
@@ -43,8 +45,10 @@ public class implementacionGestion implements interfazGestion {
 
 	@Override
 	public List<gestion> repostajeFactura(List<gestion> bd,PrintWriter pw) {
+		//Se pide los valores
 		pw.println("Entro al metodo respotajeFactura");
 		Scanner leer = new Scanner (System.in);
+		//Se crea el tipo excepcion
 		gestion repostaje = new gestion();
 		//SimpleDateFormat formato = new SimpleDateFormat("yyyy/mm/dd");
 		Date fecha= new Date();
@@ -61,6 +65,7 @@ public class implementacionGestion implements interfazGestion {
 			System.out.println("Error No puso el formato correcto");
 			pw.println("Error No puso el formato correcto");
 		}
+		//Se añade el repostaje
 		bd.add(repostaje);
 		pw.println("Creo un repostaje Factura");
 		return bd;
@@ -70,9 +75,11 @@ public class implementacionGestion implements interfazGestion {
 	public void monstrarRepostaje(List<gestion> bd,PrintWriter pw) {
 		pw.println("Entro al metodo mostrarRepostaje");
 		Scanner leer = new Scanner (System.in);
+		//Si esta vacia entra
 		if(bd.isEmpty())
 			System.out.println("No se ha realizado ningun repostaje");
 		else {
+			//Pregunat el tipo a mostrar
 			System.out.println("1-Repostaje Normal");
 			System.out.println("2-Repostaje Factura");
 			System.out.println("3-Todos");
@@ -123,7 +130,9 @@ public class implementacionGestion implements interfazGestion {
 	public List<gestion> modificarRepostaje(List<gestion> bd,PrintWriter pw) {
 		pw.println("Entro al metodo modificarRepostaje");
 		Scanner leer = new Scanner (System.in);
+		//Muestra lso repostajes
 		mostrar(bd,pw);
+		//Pregunta cual modificar
 		System.out.println("Que repostaje desea modificar: ");
 		int opcion =0;
 		try {
@@ -138,6 +147,7 @@ public class implementacionGestion implements interfazGestion {
 			System.out.println("No existe ese registro");
 		else {
 			try {
+				//Pide los valores
 			System.out.println("Introduzca la cantidad que desea meter gasolina: ");
 			bd.get(opcion).setImporte(leer.nextDouble());
 			bd.get(opcion).setLitros(bd.get(opcion).getImporte() * 0.762);
@@ -167,11 +177,14 @@ public class implementacionGestion implements interfazGestion {
 	public List<gestion> eliminarRepostaje(List<gestion> bd,PrintWriter pw) {
 		pw.println("Entro al metodo eliminarRepostaje");
 		Scanner leer = new Scanner (System.in);
+		//Muestra los repostajes
 		mostrar(bd,pw);
+		//Comprueba si esta vacia
 		if(!bd.isEmpty()) {
 		System.out.println("Que repostaje desea eliminar: ");
 		int opcion=0;
 		try {
+			//Pide el repostaje a aliminar
 		opcion= leer.nextInt();
 		bd.remove(opcion);
 		pw.println("Elimino un repostaje");
@@ -192,6 +205,7 @@ public class implementacionGestion implements interfazGestion {
 	@Override
 	public void mostrar(List<gestion> bd,PrintWriter pw) {
 		pw.println("Entro al metodo mostrar");
+		//Comprueba si esta vacia
 		if(!bd.isEmpty()) {
 		for(int e=0;e<bd.size();e++) {
 			System.out.println("Numero: "+e);

@@ -19,10 +19,13 @@ public class principal {
 		int opcion;
 		Scanner leer = new Scanner (System.in);
 		List <gestion> bd = new LinkedList <gestion>();
+		//Se crea las interfaces
 		interfazGestion interfaz = new implementacionGestion();
 		interfazEscritura interfazEs= new implementacionEscritura();
+		//Creamos un objeto PrintWriter y la ruta
 		PrintWriter pw =interfazEs.Abrir("C:\\Users\\Isidro Camacho\\Desktop\\ficheros\\log.txt");
 		do {
+			//Imprime el menu
 		System.out.println("1-Repostaje Normal");
 		System.out.println("2-Repostaje factura");
 		System.out.println("3-Ver repostajes");
@@ -32,6 +35,7 @@ public class principal {
 		System.out.println("Bienvenido Introduzca un opcion: ");
 		opcion=0;
 		try {
+			//Coge el valor si no pone el formato correcto entra en la excepcion
 		opcion = leer.nextInt();
 		}catch(InputMismatchException i) {
 			System.out.println("Error No puso el formato correcto");
@@ -47,28 +51,34 @@ public class principal {
 		
 		switch(opcion) {
 		case 1:
+			//Crea un repostaje Normal
 			interfazEs.Escribir(pw, "Opcion Repostaje Normal elegida");
 			interfaz.repostajeNormal(bd,pw);
 			break;
 		case 2:
+			//Crea un repostaje Factura
 			interfazEs.Escribir(pw, "Opcion Repostaje factura elegida");
 			interfaz.repostajeFactura(bd,pw);			
 			break;
 		case 3:
+			//Muestra lso repostajes
 			interfazEs.Escribir(pw, "Opcion Mostar Repostajes elegida");
 			interfaz.monstrarRepostaje(bd,pw);
 			break;
 		case 4:
+			//Modifica el repostaje
 			interfazEs.Escribir(pw, "Opcion Modificar Repostajes elegida");
 			interfaz.modificarRepostaje(bd,pw);
 			break;
 		case 5:
+			//Elimina el repostaje
 			interfazEs.Escribir(pw, "Opcion Eliminar Repostaje elegida");
 			interfaz.eliminarRepostaje(bd,pw);
 			break;
 		}
 		
 		}while(opcion!=0);
+		//Se cierra el printwriter y el escaner
 		interfazEs.Escribir(pw, "-------------------------");
 		interfazEs.Cerrar(pw);
 		leer.close();
